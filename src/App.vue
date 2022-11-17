@@ -20,11 +20,11 @@ export default {
   },
   methods: {
     getActors() {
+      store.isLoaded = false;
       axios.get(store.apiUrl)
       .then(function (response) {
         store.actorsList = response.data
-        // handle success
-        console.log(response.data);
+        store.isLoaded = true
       })
       .catch(function (error) {
         // handle error
