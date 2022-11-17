@@ -1,14 +1,50 @@
 <script>
+import axios from 'axios';
+import {store} from './data/store'
+
+import AppHeader from './components/AppHeader.vue';
+import AppSearch from './components/AppSearch.vue';
+import AppMain from './components/AppMain.vue';
+
 export default {
-  name : 'App'
+  name : 'App',
+  data() {
+    return {
+      store
+    }
+  },
+  components : {
+    AppHeader,
+    AppSearch,
+    AppMain
+  },
+  methods: {
+    getActors() {
+      axios.get(store.apiUrl)
+      .then(function (response) {
+        store.actorsList = response.data
+        // handle success
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+    }
+  },
+  mounted() {
+    this.getActors();
+  }
 }
 </script>
 
 
 <template>
-  <div class="container">
-    ciao
-  </div>
+
+  <AppHeader />
+  <AppSearch />
+  <AppMain />
+  
 </template>
 
 
