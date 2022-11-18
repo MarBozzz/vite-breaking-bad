@@ -45,7 +45,10 @@ export default {
 <style lang="scss" scoped>
 main {
   .wrapper {
-    background-color: white;
+    background-image: url(../assets/img/wallpaperflare.com_wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     max-width: 70%;
     .upperband {
       height: 60px;
@@ -58,11 +61,9 @@ main {
     }
     .container {
       max-width: 100%;
-      background-color: white;
       padding: 1rem 5rem;
       .row {
       width: 100%;
-      background-color: white;
       }
     }
   }

@@ -21,9 +21,18 @@ export default {
   methods: {
     getActors() {
       store.isLoaded = false;
-      axios.get(store.apiUrl)
+      axios.get(store.apiUrl, {
+        params : {
+          category : store.categoryToSearch
+        }
+      })
       .then(function (response) {
         store.actorsList = response.data
+        if(store.listCategory.length === 0){
+          store.actorsList.forEach(actor => {
+            if(!store.listCategory.includes(actor.category)) store.listCategory.push(actor.category);
+          })
+        }
         store.isLoaded = true
       })
       .catch(function (error) {
@@ -42,7 +51,7 @@ export default {
 <template>
 
   <AppHeader />
-  <AppSearch />
+  <AppSearch @startSearch = 'getActors()'/>
   <AppMain />
   
 </template>

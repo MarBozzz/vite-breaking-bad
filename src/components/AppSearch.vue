@@ -1,28 +1,43 @@
 <script>
+
+import { store } from "../data/store";
 export default {
-  name : 'AppSearch'
+  name : 'AppSearch',
+  data() {
+    return {
+      store
+    }
+  },
+  methods : {
+    reset() {
+      store.categoryToSearch = ''
+    }
+  }
 }
 </script>
 
 
 <template>
 
-<div class="dropdown container">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
+<div class="container d-flex">
+  <div class="row">
+    <div class="col-auto">
+      <select @change="$emit('startSearch')" v-model="store.categoryToSearch" class="select form-select">
+        <option value="" selected>Select Series</option>
+        <option v-for="(category, index) in store.listCategory" :key="index" :value="category">{{category}}</option>
+      </select>
+    </div>
+    <!-- <div class="col-auto">
+      <button @click="reset()" type="button" class="btn btn-warning">Reset</button>
+    </div> -->
+  </div>
 </div>
   
 </template>
 
 
 <style lang="scss" scoped>
-.btn-secondary {
-  margin-bottom: 1rem;
+.select {
+  margin: 0 1rem 1rem 0;
 }
 </style>

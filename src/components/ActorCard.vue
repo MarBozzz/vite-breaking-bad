@@ -29,6 +29,7 @@ export default {
   padding: 1rem;
   margin-bottom: 2rem;
   background-color: $main-color;
+  border-radius: 15px;
   text-align: center;
   &:hover {
     cursor: pointer;
@@ -38,6 +39,9 @@ export default {
   }
   .image-container {
     height: 200px;
+    img {
+      border-radius: 15px;
+    }
   }
   h3 {
     padding-top: 1rem
