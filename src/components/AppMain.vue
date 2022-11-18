@@ -13,6 +13,14 @@ export default {
     return {
       store
     }
+  },
+  computed : {
+    searchResponse(){
+      if (store.actorsList.length > 0){
+        return 'found ' + store.actorsList.length + ' characters';
+      }
+      return 'Sorry, no results available for this research, try another one'
+    }
   }
 }
 </script>
@@ -22,7 +30,7 @@ export default {
 <main class="d-flex justify-content-center">
   <div v-if="store.isLoaded" class="wrapper d-flex flex-column align-items-center">
     <div class="upperband">
-      <p>Found {{store.actorsList.length}} characters</p>
+      <p>{{searchResponse}}</p>
     </div>
     <div class="container d-flex justify-content-center">
       <div class="row d-flex justify-content-between">
